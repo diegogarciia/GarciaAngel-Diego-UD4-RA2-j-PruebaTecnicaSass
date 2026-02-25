@@ -1,0 +1,93 @@
+@use 'variables' as v;
+
+@mixin tag-style($tag) {
+    padding: 8px 12px; 
+    margin: 5px 0; 
+    list-style: none; 
+    border-radius: 20px; 
+    font-weight: bold; 
+    text-transform: uppercase; 
+    width: fit-content;
+    @if $tag == 'success' {
+        background-color: v.$accepted;
+    } @else if $tag == 'warning' {
+        background-color: v.$warning;
+    } @else if $tag == 'danger' {
+        background-color: v.$error;
+    } @else if $tag == 'info' {
+        background-color: v.$normal;
+    } @else {
+        background-color: v.$shadow;
+    }
+}
+
+%base {
+    display: inline-block ;
+    padding: 0.5rem ;
+    border-radius: v.$border-radius;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+}
+
+%base .btn:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+%base .btn:active {
+    background-color: v.$warning;
+    color: white;
+}
+
+.btn {
+    @extend %base;
+}
+
+.btn-error {
+    background-color: v.$error;
+}
+
+.btn-warning {
+    background-color: v.$warning;
+    
+}
+
+.btn-accepted {
+    background-color: v.$accepted;
+}
+
+.btn-normal {
+    background-color: v.$normal;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th {
+    border: 1px solid black;
+    padding: 1rem;
+}
+
+td {
+    border: 1px solid black;
+    padding: 1rem;
+}
+
+.tag-success {
+    @include tag-style('success');
+}
+
+.tag-warning {
+    @include tag-style('warning');
+}
+
+.tag-danger {
+    @include tag-style('danger');
+}
+
+.tag-info {
+    @include tag-style('info');
+}

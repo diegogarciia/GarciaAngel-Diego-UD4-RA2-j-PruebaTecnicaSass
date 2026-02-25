@@ -1,0 +1,20 @@
+@use "sass:color";
+
+$error: #FF0000; 
+$warning: rgb(239, 241, 120); 
+$accepted: rgb(55, 138, 0); 
+$normal: rgb(0, 110, 255); 
+$shadow: #888; 
+$border-radius: 0.4rem;
+$color-columnas-pares: #CCCCCC;
+$color-columnas-impares: #888888;
+
+@function colum-color($max) {
+    @if ($numeroColumna % 2 == 0) {
+        @return $color-columnas-pares;
+    } @else {
+        @return $color-columnas-impares;
+    }
+}
+
+@debug "Archivo de variables y funciones cargado correctamente.";
